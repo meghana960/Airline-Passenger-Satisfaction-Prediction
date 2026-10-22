@@ -1,0 +1,116 @@
+================================================================================
+AIRLINE PASSENGER SATISFACTION PREDICTOR - DOCUMENTATION
+================================================================================
+
+PROJECT OVERVIEW
+--------------------------------------------------------------------------------
+This is a Streamlit web application that predicts airline passenger satisfaction
+based on various demographic and service-related features. The prediction model
+is built using a Random Forest classifier.
+
+TECHNOLOGY STACK
+--------------------------------------------------------------------------------
+- Python 3.10
+- Streamlit - Web framework for ML apps
+- Pandas - Data manipulation
+- Scikit-learn - ML model (RandomForest)
+- Pickle - Model serialization
+
+FILE STRUCTURE
+--------------------------------------------------------------------------------
+app.py              - Main Streamlit application
+rf_model.pkl        - Trained Random Forest classifier
+scaler.pkl          - StandardScaler for feature normalization
+encoders.pkl        - LabelEncoders for categorical features
+features.pkl       - Feature column names
+history.csv         - Prediction history (CSV)
+requirements.txt    - Python dependencies
+
+INPUT FEATURES
+--------------------------------------------------------------------------------
+1. Demographics:
+   - Gender (Male/Female)
+   - Customer Type (Loyal Customer/Disloyal Customer)
+   - Age (0-100)
+   - Type of Travel (Business Travel/Personal Travel)
+   - Class (Business/Eco/Eco Plus)
+
+2. Flight Details:
+   - Flight Distance (0-10000 miles)
+
+3. Service Ratings (0-5 scale):
+   - Inflight wifi service
+   - Departure/Arrival time convenient
+   - Ease of Online booking
+   - Gate location
+   - Food and drink
+   - Online boarding
+   - Seat comfort
+   - Inflight entertainment
+   - On-board service
+   - Leg room service
+   - Baggage handling
+   - Checkin service
+   - Inflight service
+   - Cleanliness
+
+4. Delay Information:
+   - Departure Delay in Minutes (0-1000)
+   - Arrival Delay in Minutes (0.0-1000.0)
+
+PREDICTION LOGIC
+--------------------------------------------------------------------------------
+The application uses a hybrid prediction approach:
+
+1. Rule-Based Override:
+   - If ANY service rating is 0 → automatically predicts "neutral or dissatisfied"
+   - This represents passengers who had a completely unsatisfactory experience
+
+2. ML-Based Prediction:
+   - Otherwise, the input is encoded and scaled
+   - Random Forest model predicts satisfaction
+   - Output: "satisfied" or "neutral or dissatisfied"
+
+HOW TO RUN
+--------------------------------------------------------------------------------
+1. Install dependencies:
+   pip install streamlit pandas scikit-learn
+
+2. Run the application:
+   streamlit run app.py
+
+3. The app will open in your browser at http://localhost:8501
+
+USAGE
+--------------------------------------------------------------------------------
+1. Fill in passenger information in the left column
+2. Rate all services (0-5) in the right column
+3. Enter departure and arrival delays
+4. Click "Predict" button
+5. View prediction result (green = satisfied, red = dissatisfied)
+6. Check "Show Prediction History" to view past predictions
+
+PREDICTION HISTORY
+--------------------------------------------------------------------------------
+Each prediction is saved to history.csv with:
+- Gender, Customer Type, Age, Type of Travel, Class, Flight Distance
+- Prediction result
+
+The history can be viewed within the app by checking the
+"Show Prediction History" checkbox.
+
+MODEL DETAILS
+--------------------------------------------------------------------------------
+- Algorithm: Random Forest Classifier
+- Number of estimators: 100 (default)
+- Input features: 22 features
+- Output: Binary classification (satisfied/neutral or dissatisfied)
+
+NOTES
+--------------------------------------------------------------------------------
+- Version warnings during startup are informational only
+- The model was trained with scikit-learn 1.6.1
+- Current environment uses scikit-learn 1.7.0 (compatible)
+- Predictions with all zeros in ratings will always return dissatisfied
+
+================================================================================

@@ -1,0 +1,12 @@
+Gender,Customer Type,Age,Type of Travel,Class,Flight Distance,Prediction
+Female,Loyal Customer,25,Business travel,Business,500,neutral or dissatisfied
+Female,Loyal Customer,25,Business travel,Business,500,neutral or dissatisfied
+Female,Loyal Customer,25,Business travel,Business,500,neutral or dissatisfied
+Female,Loyal Customer,25,Business travel,Business,500,neutral or dissatisfied
+Female,Loyal Customer,25,Business travel,Business,500,neutral or dissatisfied
+Female,Loyal Customer,25,Business travel,Business,500,neutral or dissatisfied
+Male,Loyal Customer,36,Personal Travel,Business,510,neutral or dissatisfied
+Male,Loyal Customer,36,Personal Travel,Business,510,neutral or dissatisfied
+Female,Loyal Customer,25,Business travel,Business,500,neutral or dissatisfied
+Male,disloyal Customer,32,Personal Travel,Business,506,satisfied
+Female,Loyal Customer,25,Business travel,Business,500,satisfied
